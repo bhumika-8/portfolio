@@ -1,0 +1,440 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Sketchbook design system — warm handmade notebook aesthetic.
+ * All colors use oklch. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Sketchbook palette */
+  --color-paper: var(--paper);
+  --color-paper-shade: var(--paper-shade);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-terracotta: var(--terracotta);
+  --color-sage: var(--sage);
+  --color-dusty-blue: var(--dusty-blue);
+  --color-mustard: var(--mustard);
+  --color-peach: var(--peach);
+  --color-lavender: var(--lavender);
+  --color-cream: var(--cream);
+  --color-cat: var(--cat);
+
+  --font-hand: "Caveat", cursive;
+  --font-marker: "Kalam", cursive;
+  --font-label: "Patrick Hand", cursive;
+  --font-body: "Nunito", system-ui, sans-serif;
+}
+
+:root {
+  --radius: 0.5rem;
+
+  /* Warm paper light mode */
+  --paper: oklch(0.955 0.018 78);
+  --paper-shade: oklch(0.9 0.028 75);
+  --ink: oklch(0.28 0.03 45);
+  --ink-soft: oklch(0.45 0.035 50);
+  --cream: oklch(0.94 0.03 82);
+
+  --terracotta: oklch(0.68 0.11 40);
+  --sage: oklch(0.72 0.055 145);
+  --dusty-blue: oklch(0.7 0.055 235);
+  --mustard: oklch(0.8 0.11 88);
+  --peach: oklch(0.83 0.075 55);
+  --lavender: oklch(0.78 0.055 305);
+  --cat: oklch(0.72 0.15 55);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(0.97 0.014 80);
+  --card-foreground: var(--ink);
+  --popover: var(--cream);
+  --popover-foreground: var(--ink);
+  --primary: var(--terracotta);
+  --primary-foreground: oklch(0.97 0.014 80);
+  --secondary: var(--sage);
+  --secondary-foreground: var(--ink);
+  --muted: var(--paper-shade);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--peach);
+  --accent-foreground: var(--ink);
+  --destructive: oklch(0.6 0.14 25);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.62 0.04 55);
+  --input: var(--paper-shade);
+  --ring: var(--terracotta);
+}
+
+.dark {
+  /* Warm dark paper: like a well-worn leather sketchbook */
+  --paper: oklch(0.24 0.015 60);
+  --paper-shade: oklch(0.2 0.014 55);
+  --ink: oklch(0.92 0.025 82);
+  --ink-soft: oklch(0.78 0.03 78);
+  --cream: oklch(0.88 0.03 80);
+
+  --terracotta: oklch(0.72 0.1 42);
+  --sage: oklch(0.78 0.05 148);
+  --dusty-blue: oklch(0.76 0.055 235);
+  --mustard: oklch(0.83 0.1 88);
+  --peach: oklch(0.82 0.07 55);
+  --lavender: oklch(0.8 0.06 305);
+  --cat: oklch(0.76 0.14 55);
+
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --card: oklch(0.28 0.017 60);
+  --card-foreground: var(--ink);
+  --popover: oklch(0.28 0.017 60);
+  --popover-foreground: var(--ink);
+  --primary: var(--terracotta);
+  --primary-foreground: oklch(0.15 0.01 60);
+  --secondary: var(--sage);
+  --secondary-foreground: oklch(0.15 0.01 60);
+  --muted: oklch(0.28 0.015 60);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--peach);
+  --accent-foreground: oklch(0.15 0.01 60);
+  --destructive: oklch(0.7 0.15 25);
+  --destructive-foreground: var(--cream);
+  --border: oklch(0.55 0.03 55);
+  --input: oklch(0.3 0.015 60);
+  --ring: var(--terracotta);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html,
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-foreground);
+    font-family: var(--font-body);
+    /* Hide default cursor so pencil cursor takes over */
+    cursor: none;
+  }
+
+  /* Also hide on interactive elements */
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  [role="button"] {
+    cursor: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-hand);
+    color: var(--color-ink);
+    letter-spacing: 0.01em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-mustard) 60%, transparent);
+    color: var(--color-ink);
+  }
+
+  /* Hand-drawn scrollbar */
+  ::-webkit-scrollbar {
+    width: 14px;
+    height: 14px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: color-mix(in oklab, var(--color-ink) 30%, transparent);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: padding-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in oklab, var(--color-ink) 55%, transparent);
+    background-clip: padding-box;
+    border: 3px solid transparent;
+  }
+}
+
+/* --- Paper texture --------------------------------------------------- */
+/* Layered noise + faint fibers via SVG-in-CSS. Subtle. */
+.paper-texture {
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(circle at 20% 20%,
+      color-mix(in oklab, var(--color-paper-shade) 60%, transparent) 0%,
+      transparent 40%),
+    radial-gradient(circle at 80% 70%,
+      color-mix(in oklab, var(--color-paper-shade) 45%, transparent) 0%,
+      transparent 45%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.22  0 0 0 0.09 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 100% 100%, 100% 100%, 300px 300px;
+  background-repeat: no-repeat, no-repeat, repeat;
+}
+
+/* Vignette to feel like a page in a book */
+.paper-vignette::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    color-mix(in oklab, var(--color-ink) 12%, transparent) 100%
+  );
+}
+
+/* --- Hand-drawn wobble filter access -------------------------------- */
+.wobble {
+  filter: url(#sketch-wobble);
+}
+.wobble-strong {
+  filter: url(#sketch-wobble-strong);
+}
+
+/* --- Sketch button --------------------------------------------------- */
+@utility btn-sketch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  font-family: var(--font-label);
+  font-size: 1.05rem;
+  color: var(--color-ink);
+  background: transparent;
+  border: none;
+  transition: transform 0.15s ease;
+  &:hover {
+    transform: translate(-1px, -1px) rotate(-0.6deg);
+  }
+  &:active {
+    transform: translate(1px, 1px) rotate(0.4deg);
+  }
+}
+
+@utility sketch-underline {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 8' preserveAspectRatio='none'><path d='M2 5 Q 50 1 100 4 T 198 3' stroke='%23a0522d' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 8px;
+  background-position: bottom left;
+  padding-bottom: 6px;
+}
+
+/* Torn tape */
+@utility tape {
+  position: absolute;
+  width: 90px;
+  height: 24px;
+  background: color-mix(in oklab, var(--color-mustard) 65%, transparent);
+  box-shadow: 0 1px 2px color-mix(in oklab, var(--color-ink) 20%, transparent);
+  clip-path: polygon(3% 20%, 8% 5%, 20% 15%, 35% 3%, 55% 12%, 75% 4%, 92% 18%, 98% 5%,
+                     97% 82%, 90% 96%, 74% 88%, 55% 97%, 38% 90%, 20% 96%, 8% 90%, 2% 80%);
+}
+
+/* Sketch-in draw animation for SVG strokes */
+@keyframes draw-stroke {
+  from { stroke-dashoffset: var(--dash, 1000); }
+  to { stroke-dashoffset: 0; }
+}
+.draw-in path,
+.draw-in circle,
+.draw-in rect,
+.draw-in line,
+.draw-in polyline,
+.draw-in polygon,
+.draw-in ellipse {
+  stroke-dasharray: var(--dash, 1000);
+  stroke-dashoffset: var(--dash, 1000);
+  animation: draw-stroke 0.9s ease-out forwards;
+  animation-delay: var(--draw-delay, 0s);
+}
+
+/* pastel fill fade-in that follows the stroke */
+@keyframes fill-in {
+  from { fill-opacity: 0; }
+  to { fill-opacity: var(--fill-target, 1); }
+}
+.fill-in {
+  fill-opacity: 0;
+  animation: fill-in 0.6s ease-out forwards;
+  animation-delay: var(--fill-delay, 0.7s);
+}
+
+/* Gentle wobble idle */
+@keyframes gentle-wobble {
+  0%, 100% { transform: rotate(-0.6deg); }
+  50% { transform: rotate(0.6deg); }
+}
+.gentle-wobble {
+  animation: gentle-wobble 5s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Fish wiggle */
+@keyframes fish-wiggle {
+  0%, 100% { transform: rotate(-3deg) translateX(0); }
+  50% { transform: rotate(3deg) translateX(4px); }
+}
+.fish-wiggle {
+  animation: fish-wiggle 3s ease-in-out infinite;
+  transform-origin: 30% center;
+}
+
+/* Sticky note wobble */
+@keyframes sticky-wobble {
+  0%, 100% { transform: rotate(var(--rot, -2deg)) translateY(0); }
+  50% { transform: rotate(calc(var(--rot, -2deg) + 0.6deg)) translateY(-2px); }
+}
+.sticky-wobble {
+  animation: sticky-wobble 4.5s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+/* Butterfly flutter path — used by JS position but wings flap here */
+@keyframes wing-flap {
+  0%, 100% { transform: scaleX(1) rotate(0deg); }
+  50% { transform: scaleX(0.4) rotate(8deg); }
+}
+.wing-flap {
+  animation: wing-flap 0.18s ease-in-out infinite;
+  transform-origin: right center;
+}
+.wing-flap-r {
+  animation: wing-flap 0.18s ease-in-out infinite reverse;
+  transform-origin: left center;
+}
+
+/* Cat leg run cycle */
+@keyframes cat-leg-front {
+  0%, 100% { transform: rotate(-30deg); }
+  50% { transform: rotate(30deg); }
+}
+@keyframes cat-leg-back {
+  0%, 100% { transform: rotate(30deg); }
+  50% { transform: rotate(-30deg); }
+}
+@keyframes cat-body-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+}
+@keyframes tail-flick {
+  0%, 100% { transform: rotate(-8deg); }
+  50% { transform: rotate(10deg); }
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+/* Page-flip helpers */
+.page-3d {
+  perspective: 2200px;
+  transform-style: preserve-3d;
+}
+
+/* Graphite click mark */
+@keyframes graphite-fade {
+  0% { opacity: 0.9; transform: scale(0.6) rotate(var(--r, 0deg)); }
+  100% { opacity: 0; transform: scale(1.2) rotate(var(--r, 0deg)); }
+}
+.graphite-mark {
+  animation: graphite-fade 0.8s ease-out forwards;
+}
+
+/* Suppress ambient butterflies when .hide-butterflies is on the page */
+body.has-hide-butterflies [data-ambient-butterflies] {
+  display: none;
+}
+
+/* Keep the home composition focused on its working centerpiece. */
+.home-clean > [aria-hidden],
+.home-clean > [aria-label='hidden cat'] {
+  display: none;
+}
+
+@keyframes nav-calico-walk {
+  0% { top: -30px; left: 30px; transform: rotate(90deg) scaleX(1); }
+  47% { top: calc(100% - 28px); left: 30px; transform: rotate(90deg) scaleX(1); }
+  50% { top: calc(100% - 28px); left: 30px; transform: rotate(270deg) scaleX(1); }
+  97% { top: -30px; left: 30px; transform: rotate(270deg) scaleX(1); }
+  100% { top: -30px; left: 30px; transform: rotate(90deg) scaleX(1); }
+}
+.nav-calico { animation: nav-calico-walk 10s linear infinite; transform-origin: center; }
+.nav-cat-legs { animation: nav-cat-step 0.32s ease-in-out infinite alternate; transform-origin: center; }
+@keyframes nav-cat-step { from { transform: skewX(-5deg); } to { transform: skewX(5deg); } }
+.home-clean > .home-background-art {
+  display: block;
+}
+
+.notebook-lines {
+  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 29px, color-mix(in oklab, var(--color-dusty-blue) 26%, transparent) 30px);
+}
+.notebook-rule-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, transparent 157px, color-mix(in oklab, var(--color-terracotta) 68%, transparent) 158px, color-mix(in oklab, var(--color-terracotta) 68%, transparent) 159px, transparent 160px),
+    repeating-linear-gradient(to bottom, transparent 0, transparent 31px, color-mix(in oklab, var(--color-dusty-blue) 23%, transparent) 32px, transparent 33px);
+}
+.notebook-sidebar-paper {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 158px;
+  z-index: 24;
+  pointer-events: none;
+  background: color-mix(in oklab, var(--color-paper) 90%, transparent);
+  box-shadow: 4px 0 12px color-mix(in oklab, var(--color-ink) 7%, transparent);
+}
+@media (max-width: 640px) {
+  .notebook-sidebar-paper { width: 138px; }
+  .notebook-rule-layer {
+    background-image:
+      linear-gradient(to right, transparent 137px, color-mix(in oklab, var(--color-terracotta) 68%, transparent) 138px, color-mix(in oklab, var(--color-terracotta) 68%, transparent) 139px, transparent 140px),
+      repeating-linear-gradient(to bottom, transparent 0, transparent 31px, color-mix(in oklab, var(--color-dusty-blue) 23%, transparent) 32px, transparent 33px);
+  }
+}
+.tech-tape {
+  display: inline-block;
+  border: 1px solid color-mix(in oklab, var(--color-ink) 35%, transparent);
+  background: color-mix(in oklab, var(--color-mustard) 38%, var(--color-cream));
+  box-shadow: 1px 2px 0 color-mix(in oklab, var(--color-ink) 12%, transparent);
+  clip-path: polygon(3% 7%, 96% 0, 100% 88%, 5% 100%);
+  transform: rotate(-1deg);
+}
+.tech-tape:nth-child(even) { transform: rotate(1.5deg); background: color-mix(in oklab, var(--color-dusty-blue) 32%, var(--color-cream)); }

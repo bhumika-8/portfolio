@@ -1,0 +1,198 @@
+{
+  "site": {
+    "title": "Bhumika Portfolio",
+    "description": "CS student at NIT Surat who builds too complicated full stack apps and sleeps a suspicious amount in between."
+  },
+  "navigation": {
+    "home": "home",
+    "about": "about",
+    "projects": "projects",
+    "experience": "experience",
+    "skills": "skills",
+    "resume": "resume",
+    "contact": "contact"
+  },
+  "home": {
+    "eyebrow": "~ if lost, return to the cat ~",
+    "greeting": "hello, I'm",
+    "name": "Bhumika",
+    "instruction": "",
+    "subtext": "powered by curiosity (and coffee)"
+  },
+  "wheel": {
+    "about": { "label": "who am i?", "sublabel": "(about)" },
+    "projects": { "label": "things i've built", "sublabel": "(projects)" },
+    "experience": { "label": "places i've wandered", "sublabel": "(experience)" },
+    "skills": { "label": "tiny superpowers", "sublabel": "(skills)" },
+    "resume": { "label": "paper trail", "sublabel": "(resume)" },
+    "contact": { "label": "say hi!", "sublabel": "(contact)" }
+  },
+  "about": {
+    "title": "about",
+    "subtitle": "(a brain dump)",
+    "intro": "I'm a fourth year CSE student at NIT Surat who builds full stack apps with way more moving parts than they need to have. Payment systems, real time sync, whatever the project needs. Then I take a nap and pretend none of it happened (jk).",
+    "likesTitle": "things i like",
+    "likes": [
+      "Sleeping (it's basically my main personality trait)",
+      "Novels that make me forget I have a deadline (Currently accepting life advice from Jane Austen).",
+      "Coffee (the fuel, not the beverage)",
+      "A todo list I get to check off, extra points if I made it unnecessarily complicated"
+    ],
+    "stackTitle": "stack, roughly",
+    "stack": "JavaScript and TypeScript, React, Next.js, Node, Express, NestJS, MongoDB, PostgreSQL, Socket.IO, Docker, and an amount of Redis job queues that should probably be reported.",
+    "current": "Currently building ContribIQ, an AI agent that reads your GitHub repos and tells you what you're secretly good at (usually more than your resume admits). Also recovering from an internship where I designed the brain of an entire recycling platform.",
+    "currentCaption": "that's what I'm doing now!"
+  },
+  "projectsSection": {
+    "title": "projects",
+    "subtitle": "",
+    "liveDemoLabel": "view live demo",
+    "sourceLabel": "github"
+  },
+  "projects": [
+    {
+      "title": "Curio",
+      "blurb": "A community Q&A platform with an AI sidekick so you never sound dumb.",
+      "long": "A full stack MERN forum for asking questions, threading answers, and tagging content, with a personalized feed that actually learns what you care about instead of just showing you everything. An LLM powered assistant helps draft answers and suggest tags in real time, so you can look smarter than you feel at 2am.",
+      "tech": ["React", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
+      "liveUrl": "https://curio-ai-hazel.vercel.app/",
+      "sourceUrl": "https://github.com/bhumika-8/Curio-AI"
+    },
+    {
+      "title": "CollabCode",
+      "blurb": "Google Docs, but for code, and without the awkward account sign in.",
+      "long": "A real time collaborative code editor supporting 18 languages with Yjs CRDTs for conflict free syncing and live cursor presence. Untrusted code runs safely in per submission Docker containers that clean themselves up afterward, and a Redis and BullMQ job queue spread across worker nodes means a crashed worker doesn't lose your work. Nothing says fun weekend project like building a small distributed system.",
+      "tech": ["React", "Node.js", "Socket.IO", "Yjs", "BullMQ", "Redis", "Docker"],
+      "liveUrl": "",
+      "sourceUrl": "https://github.com/foramgandhicodecraft/Collaborative-Code-Editor"
+    },
+    {
+      "title": "Word Warp",
+      "blurb": "A multiplayer party game built specifically to avoid doing actual work.",
+      "long": "Players create rooms, submit anonymous responses to prompts, and vote through a rotating judge. Think a fast, browser based party game with real time everything. Socket.IO keeps everyone's screen in sync so chaos stays perfectly synchronized chaos.",
+      "tech": ["React", "Node.js", "Express", "Socket.IO"],
+      "liveUrl": "https://word-warp-ten.vercel.app/",
+      "sourceUrl": "https://github.com/bhumika-8/word-warp"
+    },
+    {
+      "title": "ContribIQ",
+      "blurb": "An LLM agent that reads your GitHub and tells you what you're actually good at.",
+      "long": "Instead of trusting self reported tags or GitHub's raw language stats, ContribIQ parses dependency files across your repos to figure out your real skills, scores them with an LLM agent using a strict schema so nothing gets hallucinated, and then matches you to open source issues using vector similarity across skill, interest, difficulty, and time commitment. Basically a dating app, but it's matching you with GitHub issues instead of people.",
+      "tech": ["Next.js", "FastAPI", "PostgreSQL/pgvector", "LLM Agents", "Redis"],
+      "liveUrl": "",
+      "sourceUrl": "https://github.com/Nirmeet47/contribiq"
+    },
+    {
+      "title": "Chicago Crime Data Analytics",
+      "blurb": "Wrangled 7 million rows of crime data into something that actually makes sense.",
+      "long": "Processed a 7 million plus row dataset using Dask for distributed, out of memory computation, built an ETL pipeline to clean out the mess (missing values, duplicates, garbage coordinates), and dug into peak crime hours, hotspots, and multi year trends across Chicago. Turns out spreadsheets can be genuinely unsettling at scale.",
+      "tech": ["Python", "Pandas", "Dask", "Matplotlib", "Seaborn"],
+      "liveUrl": "",
+      "sourceUrl": "https://github.com/foramgandhicodecraft/DSLab_Project_CrimeDataAnalytics_NirmeetParmar_U23CS047"
+    }
+  ],
+  "experienceSection": { "title": "work scrapbook", "subtitle": "" },
+  "experience": {
+    "company": "ReThink",
+    "role": "Software Development Intern",
+    "dates": "May 2026 to July 2026",
+    "location": "Remote",
+    "projectsLabel": "projects i built",
+    "projects": [
+      {
+        "number": "01",
+        "title": "Collection Centre Platform",
+        "description": "A five role recycling platform connecting collection centres, recyclers, aggregators, students, and admins.",
+        "tech": ["React", "TypeScript", "Node.js", "MongoDB", "Firebase"],
+        "long": "- Wrote the PRDs and designed the data model for a five role platform (admin, aggregator, centre, recycler, student), each with its own dashboard\n- Built phone OTP onboarding with an admin approval queue, so random people couldn't just declare themselves a recycling centre\n- Built the scan to reward loop, scan an item, watch points called Karma show up instantly, feel unreasonably proud of a plastic bottle\n- Set up automatic recycler matching by area, material, and proximity, so pickups stop landing on someone three cities away\n- Built a two way payout system with Razorpay so centres and recyclers actually get paid, plus monthly reports nobody asked for but everyone secretly liked"
+      },
+      {
+        "number": "02",
+        "title": "SecondOpinion",
+        "description": "A doctor to doctor consultation platform for getting a second clinical opinion.",
+        "tech": ["NestJS", "Next.js", "PostgreSQL/Prisma", "BullMQ", "LiveKit"],
+        "long": "- Handled the full case journey, from submission to a specialist picking it up under an SLA, to back and forth questions, to reopening a case later if needed\n- Logged every single step to an audit trail, because nothing says trustworthy healthcare app like receipts for every click\n- Added text, voice notes, and image support to case notes, plus video consults that save their own transcripts so nobody has to take notes\n- Built a no show system that automatically refunds or credits the right person, so no one has to argue about it in an email\n- Set up wallet plus subscription billing that never double charges anyone, and made sure doctors couldn't go live until every document was verified"
+      }
+    ],
+    "learnedTitle": "what i learned",
+    "learned": [
+      "product planning (turns out the \"why\" matters too)",
+      "thinking like the person on the other side of the screen",
+      "collaboration (the best solutions rarely belong to one person)",
+      "convincing third-party services to cooperate",
+      "making friends with unfamiliar frameworks"
+      
+    ],
+    "quote": "turns out, software is mostly edge cases",
+    "skillsTitle": "skill ratings",
+    "skills": [
+      { "name": "communication", "rating": 4 },
+      { "name": "backend thinking", "rating": 4 },
+      { "name": "problem solving", "rating": 5 },
+      { "name": "product planning", "rating": 4 },
+      { "name": "debugging", "rating": 5 }
+    ],
+    "skillsNote": "rated by me, take it with a pinch of salt"
+  },
+  "skillsSection": { "title": "skills", "subtitle": "( my aquarium )" },
+  "skills": [
+    { "name": "JavaScript / TypeScript", "detail": "Languages I use to build reliable, type safe web applications." },
+    { "name": "React & Next.js", "detail": "My main frontend toolkit for interactive interfaces and full stack web apps." },
+    { "name": "Node.js / Express / NestJS", "detail": "Backend APIs, services, and application architecture." },
+    { "name": "Python", "detail": "Scripting, automation, and problem solving." },
+    { "name": "MongoDB", "detail": "Document data modeling and application persistence." },
+    { "name": "PostgreSQL / Prisma", "detail": "Relational data modeling, queries, and type safe database access." },
+    { "name": "Socket.IO", "detail": "Real time communication and event driven interfaces." },
+    { "name": "Docker", "detail": "Containerized development and consistent deployments." },
+    { "name": "Redis & BullMQ", "detail": "Caching, queues, and background job processing." }
+  ],
+  "resume": {
+    "title": "resume",
+    "subtitle": "tucked in the back",
+    "foldedLabel": "resume",
+    "foldedCaption": "",
+    "unfoldInstruction": "pull me out!",
+    "documentTitle": "quick glance",
+    "documentSubtitle": "A concise version of my work, education, and skills.",
+    "paragraphs": [
+      "Fourth year CS student at NIT Surat (8.70 CGPA) who ends up owning the most complex part of every project. Think multi step workflows, real time sync, and payment systems that somehow never double charge anyone.",
+      "Comfortable across the stack: React and Next.js on the front, Node, Express, NestJS, and FastAPI on the back, and enough Docker, Redis, and queue experience to build small distributed systems without breaking a sweat (mostly)."
+    ],
+    "downloadLabel": "download PDF",
+    "downloadUrl": "/resume.pdf",
+    "foldBackLabel": "fold back",
+    "aboutTitle": "about me",
+    "summary": "Fourth year CS student who loves building full stack apps, solving product problems, and learning new things.",
+    "educationTitle": "education",
+    "education": [
+      { "degree": "B.Tech in Computer Science & Engineering", "school": "NIT Surat", "dates": "2023 to 2027", "cgpa": "CGPA: 8.70" }
+    ],
+    "skillsTitle": "skills",
+    "skills": [
+      "JavaScript / TypeScript",
+      "React / Next.js",
+      "Node.js / Express / NestJS",
+      "MongoDB / PostgreSQL",
+      "Redis / Docker"
+    ],
+    "experienceTitle": "experience",
+    "experience": [
+      { "role": "Software Development Intern", "company": "ReThink", "dates": "May 2026 to July 2026" }
+    ]
+  },
+  "contact": {
+    "title": "contact",
+    "subtitle": "write me a letter :)",
+    "salutation": "dear human,",
+    "nameLabel": "my name is",
+    "namePlaceholder": "e.g. someone lovely",
+    "emailLabel": "reach me at",
+    "emailPlaceholder": "you@somewhere.com",
+    "messageLabel": "i want to say...",
+    "messagePlaceholder": "hi! i'd love to...",
+    "sendLabel": "send letter",
+    "email": "bhumika.85p@gmail.com",
+    "signoff": "yours, Bhumika",
+    "successMessage": "Thanks, your letter is in. I'll write back once I've had coffee, or slept, whichever comes first."
+  }
+}
