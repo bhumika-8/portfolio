@@ -1,3 +1,13 @@
+@import "@fontsource/caveat/latin-500.css";
+@import "@fontsource/caveat/latin-600.css";
+@import "@fontsource/caveat/latin-700.css";
+@import "@fontsource/kalam/latin-400.css";
+@import "@fontsource/kalam/latin-700.css";
+@import "@fontsource/patrick-hand/latin-400.css";
+@import "@fontsource/nunito/latin-400.css";
+@import "@fontsource/nunito/latin-600.css";
+@import "@fontsource/nunito/latin-700.css";
+
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -5,7 +15,7 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Sketchbook design system — warm handmade notebook aesthetic.
+ * Sketchbook design system â€” warm handmade notebook aesthetic.
  * All colors use oklch. Never hardcode colors in components.
  */
 
@@ -155,7 +165,12 @@
     cursor: none;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-hand);
     color: var(--color-ink);
     letter-spacing: 0.01em;
@@ -192,14 +207,21 @@
 .paper-texture {
   background-color: var(--color-paper);
   background-image:
-    radial-gradient(circle at 20% 20%,
+    radial-gradient(
+      circle at 20% 20%,
       color-mix(in oklab, var(--color-paper-shade) 60%, transparent) 0%,
-      transparent 40%),
-    radial-gradient(circle at 80% 70%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 80% 70%,
       color-mix(in oklab, var(--color-paper-shade) 45%, transparent) 0%,
-      transparent 45%),
+      transparent 45%
+    ),
     url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.35  0 0 0 0 0.28  0 0 0 0 0.22  0 0 0 0.09 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  background-size: 100% 100%, 100% 100%, 300px 300px;
+  background-size:
+    100% 100%,
+    100% 100%,
+    300px 300px;
   background-repeat: no-repeat, no-repeat, repeat;
 }
 
@@ -261,14 +283,34 @@
   height: 24px;
   background: color-mix(in oklab, var(--color-mustard) 65%, transparent);
   box-shadow: 0 1px 2px color-mix(in oklab, var(--color-ink) 20%, transparent);
-  clip-path: polygon(3% 20%, 8% 5%, 20% 15%, 35% 3%, 55% 12%, 75% 4%, 92% 18%, 98% 5%,
-                     97% 82%, 90% 96%, 74% 88%, 55% 97%, 38% 90%, 20% 96%, 8% 90%, 2% 80%);
+  clip-path: polygon(
+    3% 20%,
+    8% 5%,
+    20% 15%,
+    35% 3%,
+    55% 12%,
+    75% 4%,
+    92% 18%,
+    98% 5%,
+    97% 82%,
+    90% 96%,
+    74% 88%,
+    55% 97%,
+    38% 90%,
+    20% 96%,
+    8% 90%,
+    2% 80%
+  );
 }
 
 /* Sketch-in draw animation for SVG strokes */
 @keyframes draw-stroke {
-  from { stroke-dashoffset: var(--dash, 1000); }
-  to { stroke-dashoffset: 0; }
+  from {
+    stroke-dashoffset: var(--dash, 1000);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
 }
 .draw-in path,
 .draw-in circle,
@@ -285,8 +327,12 @@
 
 /* pastel fill fade-in that follows the stroke */
 @keyframes fill-in {
-  from { fill-opacity: 0; }
-  to { fill-opacity: var(--fill-target, 1); }
+  from {
+    fill-opacity: 0;
+  }
+  to {
+    fill-opacity: var(--fill-target, 1);
+  }
 }
 .fill-in {
   fill-opacity: 0;
@@ -296,8 +342,13 @@
 
 /* Gentle wobble idle */
 @keyframes gentle-wobble {
-  0%, 100% { transform: rotate(-0.6deg); }
-  50% { transform: rotate(0.6deg); }
+  0%,
+  100% {
+    transform: rotate(-0.6deg);
+  }
+  50% {
+    transform: rotate(0.6deg);
+  }
 }
 .gentle-wobble {
   animation: gentle-wobble 5s ease-in-out infinite;
@@ -306,8 +357,13 @@
 
 /* Fish wiggle */
 @keyframes fish-wiggle {
-  0%, 100% { transform: rotate(-3deg) translateX(0); }
-  50% { transform: rotate(3deg) translateX(4px); }
+  0%,
+  100% {
+    transform: rotate(-3deg) translateX(0);
+  }
+  50% {
+    transform: rotate(3deg) translateX(4px);
+  }
 }
 .fish-wiggle {
   animation: fish-wiggle 3s ease-in-out infinite;
@@ -316,18 +372,28 @@
 
 /* Sticky note wobble */
 @keyframes sticky-wobble {
-  0%, 100% { transform: rotate(var(--rot, -2deg)) translateY(0); }
-  50% { transform: rotate(calc(var(--rot, -2deg) + 0.6deg)) translateY(-2px); }
+  0%,
+  100% {
+    transform: rotate(var(--rot, -2deg)) translateY(0);
+  }
+  50% {
+    transform: rotate(calc(var(--rot, -2deg) + 0.6deg)) translateY(-2px);
+  }
 }
 .sticky-wobble {
   animation: sticky-wobble 4.5s ease-in-out infinite;
   transform-origin: top center;
 }
 
-/* Butterfly flutter path — used by JS position but wings flap here */
+/* Butterfly flutter path â€” used by JS position but wings flap here */
 @keyframes wing-flap {
-  0%, 100% { transform: scaleX(1) rotate(0deg); }
-  50% { transform: scaleX(0.4) rotate(8deg); }
+  0%,
+  100% {
+    transform: scaleX(1) rotate(0deg);
+  }
+  50% {
+    transform: scaleX(0.4) rotate(8deg);
+  }
 }
 .wing-flap {
   animation: wing-flap 0.18s ease-in-out infinite;
@@ -340,24 +406,50 @@
 
 /* Cat leg run cycle */
 @keyframes cat-leg-front {
-  0%, 100% { transform: rotate(-30deg); }
-  50% { transform: rotate(30deg); }
+  0%,
+  100% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
 }
 @keyframes cat-leg-back {
-  0%, 100% { transform: rotate(30deg); }
-  50% { transform: rotate(-30deg); }
+  0%,
+  100% {
+    transform: rotate(30deg);
+  }
+  50% {
+    transform: rotate(-30deg);
+  }
 }
 @keyframes cat-body-bob {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-1.5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
 }
 @keyframes tail-flick {
-  0%, 100% { transform: rotate(-8deg); }
-  50% { transform: rotate(10deg); }
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
 }
 @keyframes blink {
-  0%, 92%, 100% { transform: scaleY(1); }
-  95% { transform: scaleY(0.1); }
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.1);
+  }
 }
 
 /* Page-flip helpers */
@@ -368,8 +460,14 @@
 
 /* Graphite click mark */
 @keyframes graphite-fade {
-  0% { opacity: 0.9; transform: scale(0.6) rotate(var(--r, 0deg)); }
-  100% { opacity: 0; transform: scale(1.2) rotate(var(--r, 0deg)); }
+  0% {
+    opacity: 0.9;
+    transform: scale(0.6) rotate(var(--r, 0deg));
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.2) rotate(var(--r, 0deg));
+  }
 }
 .graphite-mark {
   animation: graphite-fade 0.8s ease-out forwards;
@@ -382,26 +480,64 @@ body.has-hide-butterflies [data-ambient-butterflies] {
 
 /* Keep the home composition focused on its working centerpiece. */
 .home-clean > [aria-hidden],
-.home-clean > [aria-label='hidden cat'] {
+.home-clean > [aria-label="hidden cat"] {
   display: none;
 }
 
 @keyframes nav-calico-walk {
-  0% { top: -30px; left: 30px; transform: rotate(90deg) scaleX(1); }
-  47% { top: calc(100% - 28px); left: 30px; transform: rotate(90deg) scaleX(1); }
-  50% { top: calc(100% - 28px); left: 30px; transform: rotate(270deg) scaleX(1); }
-  97% { top: -30px; left: 30px; transform: rotate(270deg) scaleX(1); }
-  100% { top: -30px; left: 30px; transform: rotate(90deg) scaleX(1); }
+  0% {
+    top: -30px;
+    left: 30px;
+    transform: rotate(90deg) scaleX(1);
+  }
+  47% {
+    top: calc(100% - 28px);
+    left: 30px;
+    transform: rotate(90deg) scaleX(1);
+  }
+  50% {
+    top: calc(100% - 28px);
+    left: 30px;
+    transform: rotate(270deg) scaleX(1);
+  }
+  97% {
+    top: -30px;
+    left: 30px;
+    transform: rotate(270deg) scaleX(1);
+  }
+  100% {
+    top: -30px;
+    left: 30px;
+    transform: rotate(90deg) scaleX(1);
+  }
 }
-.nav-calico { animation: nav-calico-walk 10s linear infinite; transform-origin: center; }
-.nav-cat-legs { animation: nav-cat-step 0.32s ease-in-out infinite alternate; transform-origin: center; }
-@keyframes nav-cat-step { from { transform: skewX(-5deg); } to { transform: skewX(5deg); } }
+.nav-calico {
+  animation: nav-calico-walk 10s linear infinite;
+  transform-origin: center;
+}
+.nav-cat-legs {
+  animation: nav-cat-step 0.32s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+@keyframes nav-cat-step {
+  from {
+    transform: skewX(-5deg);
+  }
+  to {
+    transform: skewX(5deg);
+  }
+}
 .home-clean > .home-background-art {
   display: block;
 }
 
 .notebook-lines {
-  background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 29px, color-mix(in oklab, var(--color-dusty-blue) 26%, transparent) 30px);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 29px,
+    color-mix(in oklab, var(--color-dusty-blue) 26%, transparent) 30px
+  );
 }
 .notebook-rule-layer {
   position: fixed;
@@ -409,8 +545,20 @@ body.has-hide-butterflies [data-ambient-butterflies] {
   z-index: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(to right, transparent 157px, color-mix(in oklab, var(--color-terracotta) 68%, transparent) 158px, color-mix(in oklab, var(--color-terracotta) 68%, transparent) 159px, transparent 160px),
-    repeating-linear-gradient(to bottom, transparent 0, transparent 31px, color-mix(in oklab, var(--color-dusty-blue) 23%, transparent) 32px, transparent 33px);
+    linear-gradient(
+      to right,
+      transparent 157px,
+      color-mix(in oklab, var(--color-terracotta) 68%, transparent) 158px,
+      color-mix(in oklab, var(--color-terracotta) 68%, transparent) 159px,
+      transparent 160px
+    ),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      color-mix(in oklab, var(--color-dusty-blue) 23%, transparent) 32px,
+      transparent 33px
+    );
 }
 .notebook-sidebar-paper {
   position: fixed;
@@ -422,11 +570,25 @@ body.has-hide-butterflies [data-ambient-butterflies] {
   box-shadow: 4px 0 12px color-mix(in oklab, var(--color-ink) 7%, transparent);
 }
 @media (max-width: 640px) {
-  .notebook-sidebar-paper { width: 138px; }
+  .notebook-sidebar-paper {
+    width: 138px;
+  }
   .notebook-rule-layer {
     background-image:
-      linear-gradient(to right, transparent 137px, color-mix(in oklab, var(--color-terracotta) 68%, transparent) 138px, color-mix(in oklab, var(--color-terracotta) 68%, transparent) 139px, transparent 140px),
-      repeating-linear-gradient(to bottom, transparent 0, transparent 31px, color-mix(in oklab, var(--color-dusty-blue) 23%, transparent) 32px, transparent 33px);
+      linear-gradient(
+        to right,
+        transparent 137px,
+        color-mix(in oklab, var(--color-terracotta) 68%, transparent) 138px,
+        color-mix(in oklab, var(--color-terracotta) 68%, transparent) 139px,
+        transparent 140px
+      ),
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0,
+        transparent 31px,
+        color-mix(in oklab, var(--color-dusty-blue) 23%, transparent) 32px,
+        transparent 33px
+      );
   }
 }
 .tech-tape {
@@ -437,4 +599,7 @@ body.has-hide-butterflies [data-ambient-butterflies] {
   clip-path: polygon(3% 7%, 96% 0, 100% 88%, 5% 100%);
   transform: rotate(-1deg);
 }
-.tech-tape:nth-child(even) { transform: rotate(1.5deg); background: color-mix(in oklab, var(--color-dusty-blue) 32%, var(--color-cream)); }
+.tech-tape:nth-child(even) {
+  transform: rotate(1.5deg);
+  background: color-mix(in oklab, var(--color-dusty-blue) 32%, var(--color-cream));
+}
